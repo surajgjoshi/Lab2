@@ -1,0 +1,14 @@
+on: 2
+jobs:
+  build:
+    docker:
+      - image: microsoft/dotnet:2-sdk
+      
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - dotnet restore
+      - run:
+          name: Buidl
+          command: dotnet build
