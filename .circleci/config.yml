@@ -12,3 +12,5 @@ jobs:
       - run:
           name: Buidl
           command: dotnet build
+      - run: docker build -t Lab2 .
+
