@@ -13,4 +13,16 @@ jobs:
           name: Buidl
           command: dotnet build
       - run: docker build -t Lab2 .
-
+  docker-image:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: docker-image
+          command: |
+            TAG=latest
+            IMAGE=Lab2
+            docker build -t $IMAGE:$TAG .
+            docker login $DOCKER_REGISTRY -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASSWORD
+            docker tag $IMAGE:$TAG $DOCKER_REGISTRY/$IMAGE:$TAG
+            docker push $DOCKER_REGISTRY/$IMAGE:$TAG
