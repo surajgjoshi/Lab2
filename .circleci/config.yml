@@ -13,7 +13,9 @@ jobs:
 #         name: Buidl
 #         command: dotnet build
 # docker-image:
-    machine: true
+#    machine: true
+    machine:
+      image: circleci/classic:edge
     steps:
       - checkout
       - run:
